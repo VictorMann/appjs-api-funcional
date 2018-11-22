@@ -1,18 +1,12 @@
-import {handleStatus, log} from './utils/promises-helpers.js';
+import { log } from './utils/promises-helpers.js';
 import './utils/array-helpers.js';
+import { notaService as service } from './nota/service.js';
 
 document
 .querySelector('#myButton')
 .addEventListener('click', () => 
-    fetch('/notas')
-    .then(handleStatus)
-    .then(log)
-    .then(notas => 
-        notas
-        .$flatMap(nota => nota.itens)
-        .filter(item => item.codigo == 2143)
-        .reduce((total, item) => total + item.valor, 0)
-    )
+    service
+    .sumItems(2143)
     .then(console.log)
     .catch(console.log)
 );
