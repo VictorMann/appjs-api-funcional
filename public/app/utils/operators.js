@@ -15,3 +15,5 @@ export const pipe = (...fns) => {
             value
         );
 };
+
+export const takeUtil = (time, fn) => () => (time-- > 0) && fn(); 
