@@ -17,3 +17,8 @@ export const pipe = (...fns) => {
 };
 
 export const takeUtil = (time, fn) => () => (time-- > 0) && fn(); 
+
+export const debounce = (time, fn) => {
+    let timer = 0;
+    return () => (clearTimeout(timer), timer = setTimeout(fn, time));
+};
