@@ -11,7 +11,12 @@ export const notaService = {
 
   listAll()
   {
-    return fetch(API).then(handleStatus);
+    return fetch(API)
+      .then(handleStatus)
+      .catch(err => {
+        console.log(err);
+        Promise.reject('Nao foi possivel obter as notas');
+      });
   },
 
   sumItems(code)
