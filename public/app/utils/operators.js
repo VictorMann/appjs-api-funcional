@@ -7,3 +7,11 @@ export const compose = (...fns) => {
             value
         );
 };
+
+export const pipe = (...fns) => {
+    return value => 
+        fns.reduce(
+            (previosValue, fn) => fn(previosValue), 
+            value
+        );
+};

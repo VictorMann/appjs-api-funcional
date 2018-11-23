@@ -1,5 +1,5 @@
 import { handleStatus } from '../utils/promises-helpers.js';
-import { partialize, compose } from '../utils/operators.js';
+import { partialize, pipe } from '../utils/operators.js';
 
 const API = '/notas';
 
@@ -22,8 +22,12 @@ export const notaService = {
   sumItems(code)
   {
     const filterItems = partialize(filterItemsByCode, code);
-    const sumItems = compose(sumItemsValue, filterItems, getItemsFromNotas);
-    
+    const sumItems = pipe(
+      getItemsFromNotas,
+      filterItems, 
+      sumItemsValue,
+    );
+
     return this.listAll().then(sumItems);
   }
 };
