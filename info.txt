@@ -1,0 +1,17 @@
+Corrida de Promises
+PRÓXIMA ATIVIDADE
+
+Temos o seguinte código que utiliza Promise.race:
+
+const promise1 = new Promise((resolve, reject) => 
+    setTimeout(() => resolve('promise 1 resolvida'), 3000));
+
+const promise2 = new Promise((resolve, reject) => 
+    setTimeout(() => resolve('promise 2 resolvida'), 1000));
+
+Promise.race(
+    promise1, 
+    promise2
+)
+.then(console.log)
+.catch(console.log);
