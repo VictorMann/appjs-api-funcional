@@ -29,3 +29,14 @@ export const delay = (milliseconds) => {
             setTimeout(() => resolve(data), milliseconds)
         );
 };
+
+export const retry = (retries, milliseconds, fn) => {
+    return fn().catch(err => {
+        console.log(retries);
+        return delay(milliseconds)().then(() => 
+            retries > 1
+            ? retry(--retries, milliseconds, fn)
+            : Promise.reject(err)
+        );
+    });
+};
