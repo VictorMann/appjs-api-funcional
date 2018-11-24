@@ -15,3 +15,8 @@ Promise.race(
 )
 .then(console.log)
 .catch(console.log);
+
++---
+
+A mônada Maybe é um Functor
+Porque quando temos um valor embrulhado por outro tipo não podemos aplicar uma função normalmente no valor. O Functor possui métodos especializados para interagir/modificar o valor.
